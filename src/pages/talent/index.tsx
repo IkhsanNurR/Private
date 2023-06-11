@@ -22,7 +22,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import EditIcon from "@mui/icons-material/Edit";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
-import logo from "../../public/images/logo2.png";
+import logo from "../../../public/images/logo3.png";
 import { useRouter } from "next/router";
 
 interface Column {
@@ -60,19 +60,6 @@ const columns: readonly Column[] = [
     align: "center",
     format: (value: number) => value.toLocaleString("en-US"),
   },
-  // {
-  //   id: "density",
-  //   label: "Density",
-  //   minWidth: 170,
-  //   align: "center",
-  //   format: (value: number) => value.toFixed(2),
-  // },
-  // {
-  //   id: "aksi",
-  //   label: "Aksi",
-  //   align: "center",
-  //   minWidth: 100,
-  // },
 ];
 
 interface Data {
@@ -80,8 +67,6 @@ interface Data {
   code: string;
   population: number;
   size: number;
-  // density: number;
-  // aksi: any;
 }
 
 function createData(
@@ -156,7 +141,7 @@ const StyledMenu = styled((props: MenuProps) => (
   },
 }));
 
-export default function Home() {
+const Talent = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -187,6 +172,7 @@ export default function Home() {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
+              <TableCell className="bg-gray-200 text-center">Avatar</TableCell>
               {columns.map((column) => (
                 <>
                   <TableCell
@@ -199,8 +185,7 @@ export default function Home() {
                   </TableCell>
                 </>
               ))}
-              <TableCell className="bg-gray-200 text-center">Avatar</TableCell>
-              <TableCell className="bg-gray-200">Aksi</TableCell>
+              {/* <TableCell className="bg-gray-200 text-center">Aksi</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -209,6 +194,36 @@ export default function Home() {
               .map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                    <TableCell>
+                      <AvatarGroup total={24}>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src="./images/logo3.png"
+                          // className="w-10 h-100"
+                          style={{ width: "30px", height: "30px" }}
+                          onClick={() => router.push("/users")}
+                        />
+                        <Avatar
+                          alt="Travis Howard"
+                          src="./images/logo2.png"
+                          // className="w-10 h-100"
+                          style={{ width: "30px", height: "30px" }}
+                          onClick={() => router.push("/bootcamp")}
+                        />
+                        <Avatar
+                          alt="Agnes Walker"
+                          src="./images/logo2.png"
+                          // className="w-10 h-100"
+                          style={{ width: "30px", height: "30px" }}
+                        />
+                        <Avatar
+                          alt="Trevor Henderson"
+                          src="./images/logo2.png"
+                          // className="w-10 h-100"
+                          style={{ width: "30px", height: "30px" }}
+                        />
+                      </AvatarGroup>
+                    </TableCell>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
@@ -221,67 +236,17 @@ export default function Home() {
                         </>
                       );
                     })}
-                    <TableCell>
-                      <AvatarGroup total={24}>
-                        <Avatar
-                          alt="Remy Sharp"
-                          src="../../public/images/logo2.png"
-                          // className="w-10 h-100"
-                          style={{ width: "30px", height: "30px" }}
-                          onClick={() => router.push("/users")}
-                        />
-                        <Avatar
-                          alt="Travis Howard"
-                          src="../../public/images/logo2.png"
-                          // className="w-10 h-100"
-                          style={{ width: "30px", height: "30px" }}
-                          onClick={() => router.push("/bootcamp")}
-                        />
-                        <Avatar
-                          alt="Agnes Walker"
-                          src="../../public/images/logo2.png"
-                          // className="w-10 h-100"
-                          style={{ width: "30px", height: "30px" }}
-                        />
-                        <Avatar
-                          alt="Trevor Henderson"
-                          src="../../public/images/logo2.png"
-                          // className="w-10 h-100"
-                          style={{ width: "30px", height: "30px" }}
-                        />
-                      </AvatarGroup>
-                    </TableCell>
-                    <TableCell>
+                    {/* <TableCell className="text-center">
                       <button
-                        id="demo-customized-button"
-                        aria-controls={
-                          open ? "demo-customized-menu" : undefined
+                        type="button"
+                        className="order-0 inline-flex items-center px-4 py-2 border border-transparent rounded-md bg-green-500 hover:bg-green-600  text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:order-1 "
+                        onClick={() =>
+                          router.push("./batch/evaluation/detailTalent")
                         }
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        onClick={handleClick}
                       >
-                        <MoreVertIcon />
+                        detail
                       </button>
-                      <StyledMenu
-                        id="demo-customized-menu"
-                        MenuListProps={{
-                          "aria-labelledby": "demo-customized-button",
-                        }}
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                      >
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <EditIcon />
-                          Edit
-                        </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <FileCopyIcon />
-                          Duplicate
-                        </MenuItem>
-                      </StyledMenu>
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 );
               })}
@@ -299,4 +264,6 @@ export default function Home() {
       />
     </Paper>
   );
-}
+};
+
+export default Talent;

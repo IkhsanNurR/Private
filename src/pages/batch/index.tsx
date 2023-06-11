@@ -60,19 +60,6 @@ const columns: readonly Column[] = [
     align: "center",
     format: (value: number) => value.toLocaleString("en-US"),
   },
-  // {
-  //   id: "density",
-  //   label: "Density",
-  //   minWidth: 170,
-  //   align: "center",
-  //   format: (value: number) => value.toFixed(2),
-  // },
-  // {
-  //   id: "aksi",
-  //   label: "Aksi",
-  //   align: "center",
-  //   minWidth: 100,
-  // },
 ];
 
 interface Data {
@@ -80,8 +67,6 @@ interface Data {
   code: string;
   population: number;
   size: number;
-  // density: number;
-  // aksi: any;
 }
 
 function createData(
